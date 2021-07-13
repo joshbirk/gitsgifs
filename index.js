@@ -16,13 +16,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/img/:image/:token', function(req, res) {
-    if(token && req.params.token) {
-        if (token != req.params.token) {
-            res.json({"status":"bad token"});
-            return;
-        }
-    }
+app.get('/img/:image', function(req, res) {
     var io = req.app.get('socketio');
     io.emit('image', { image: true, src: '/images/'+ req.params.image + '.gif'});
     res.json({"status":"ok"});
