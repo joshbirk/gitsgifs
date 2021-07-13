@@ -43,6 +43,14 @@
                 gifler(info.src).animate('canvas');
 
                 document.getElementById('status').innerHTML = 'Image Drawn';
+                setTimeout(function() {
+                    var element = document.getElementById("canvas");
+	                element.parentNode.removeChild(element);
+                    const new_canvas = document.createElement("canvas");
+                    new_canvas.id = "canvas";
+                    document.body.appendChild(new_canvas);
+
+                    },3000);
                 }
             });
     </SCRIPT>
