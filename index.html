@@ -5,7 +5,7 @@
 
 <BODY>
     <div id="status" style="display:none">Hello world.</div>
-    <div id="container" style="text-align: center; vertical-align: middle;">
+    <div id="container" style="text-align: center; vertical-align: middle; min-width: 400px; min-height: 300px">
         <canvas id="canvas">
             Canvas not supported
         </canvas>
@@ -35,7 +35,7 @@
 	            element.parentNode.removeChild(element);
                 const new_canvas = document.createElement("canvas");
                 new_canvas.id = "canvas";
-                document.body.appendChild(new_canvas);
+                document.getElementById("container").appendChild(new_canvas);
 
                 var canvas = document.getElementById('canvas')
                 var context = canvas.getContext('2d');
@@ -49,7 +49,7 @@
 	                element.parentNode.removeChild(element);
                     const new_canvas = document.createElement("canvas");
                     new_canvas.id = "canvas";
-                    document.body.appendChild(new_canvas);
+                    document.getElementById("container").appendChild(new_canvas);
 
                     },3000);
                 }
