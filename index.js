@@ -3,14 +3,9 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.set('socketio', io);
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"))
 
-var token = null;
-
-var fs = require('fs'); 
-if (fs.existsSync('.handshake_token')){
-    token = fs.readFileSync('.handshake_token');
-}
+var token = process.env.HANDSHAKE_TOKEN;
 
 
 http.listen(process.env.PORT || 3000, function(){
