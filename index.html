@@ -16,28 +16,17 @@
         var socket = io();
         document.getElementById('status').innerHTML = 'Connected';
   
-        // use external library to parse and draw gif animation
-        function onDrawFrame(ctx, frame) {
-            // update canvas size
-            canvas.width = frame.width;
-            canvas.height = frame.height;
-            // update canvas that we are using for Konva.Image
-            ctx.drawImage(frame.buffer, 0, 0);
-            // redraw the layer
-            layer.draw();
-        }
 
         socket.on("image", function(info) {
             if (info.image) {
-                console.log(info.src);
-        
                 var element = document.getElementById("canvas");
 	            element.parentNode.removeChild(element);
                 const new_canvas = document.createElement("canvas");
                 new_canvas.id = "canvas";
                 document.getElementById("container").appendChild(new_canvas);
 
-                var canvas = document.getElementById('canvas')
+                var canvas = document.getElementById('canvas');
+                canvas.style.border = "thick solid white"
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -51,7 +40,7 @@
                     new_canvas.id = "canvas";
                     document.getElementById("container").appendChild(new_canvas);
 
-                    },3000);
+                    },6000);
                 }
             });
     </SCRIPT>
